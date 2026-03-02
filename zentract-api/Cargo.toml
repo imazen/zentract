@@ -1,0 +1,12 @@
+[package]
+name = "zentract-api"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Host-side library for loading zentract-abi plugins via dlopen"
+
+[dependencies]
+zentract-types = { path = "../zentract-types" }
+libloading = "0.8"
+thiserror = "2"
