@@ -8,5 +8,5 @@ description = "Host-side library for loading zentract-abi plugins via dlopen"
 
 [dependencies]
 zentract-types = { path = "../zentract-types" }
-libloading = "0.8"
+libloading = "0.9"
 thiserror = "2"
