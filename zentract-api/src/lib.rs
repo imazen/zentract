@@ -106,6 +106,44 @@ impl InferenceEngine {
             handle,
         })
     }
+
+    /// Run inference on a raw model handle (from [`ModelHandle::into_raw`]).
+    #[allow(unsafe_code)]
+    pub fn infer_raw(
+        &self,
+        handle: i64,
+        input: &[f32],
+        output_index: u32,
+    ) -> Result<InferOutput, Error> {
+        let mut out_data: *const f32 = std::ptr::null();
+        let mut out_len: usize = 0;
+        let mut out_meta = TensorMeta::f32_shape(&[]);
+
+        let rc = unsafe {
+            (self.fn_infer)(
+                handle,
+                input.as_ptr(),
+                input.len(),
+                output_index,
+                &mut out_data as *mut _,
+                &mut out_len as *mut _,
+                &mut out_meta as *mut _,
+            )
+        };
+
+        if rc != 0 {
+            return Err(Error::Inference(rc));
+        }
+
+        let data = unsafe { std::slice::from_raw_parts(out_data, out_len) }.to_vec();
+        Ok(InferOutput { data, meta: out_meta })
+    }
+
+    /// Free a raw model handle (from [`ModelHandle::into_raw`]).
+    #[allow(unsafe_code)]
+    pub fn free_raw(&self, handle: i64) {
+        unsafe { (self.fn_free)(handle) };
+    }
 }
 
 /// A loaded model. Freed on drop.
@@ -115,6 +153,17 @@ pub struct ModelHandle<'e> {
 }
 
 impl<'e> ModelHandle<'e> {
+    /// Consume the handle, returning its raw ID without freeing the model.
+    ///
+    /// The model remains loaded in the plugin. Use
+    /// [`InferenceEngine::infer_raw`] to run inference, and
+    /// [`InferenceEngine::free_raw`] to free it when done.
+    pub fn into_raw(self) -> i64 {
+        let id = self.handle;
+        std::mem::forget(self);
+        id
+    }
+
     /// Run inference. Returns a copy of the output tensor data.
     #[allow(unsafe_code)]
     pub fn infer(&self, input: &[f32], output_index: u32) -> Result<InferOutput, Error> {
