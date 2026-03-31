@@ -136,7 +136,10 @@ impl InferenceEngine {
         }
 
         let data = unsafe { std::slice::from_raw_parts(out_data, out_len) }.to_vec();
-        Ok(InferOutput { data, meta: out_meta })
+        Ok(InferOutput {
+            data,
+            meta: out_meta,
+        })
     }
 
     /// Free a raw model handle (from [`ModelHandle::into_raw`]).
