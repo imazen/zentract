@@ -5,10 +5,24 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 description = "cdylib plugin that wraps tract-onnx behind a C ABI"
+exclude = [
+    "CLAUDE.md",
+    "CONTEXT-HANDOFF.md",
+    "FEEDBACK.md",
+    ".claude/",
+    ".superwork/",
+    ".zenbench/",
+    "copter-report/",
+    ".github/",
+    "Cross.toml",
+    "justfile",
+    "Cargo.toml.original.txt",
+    "fuzz/",
+]
 
 [lib]
 crate-type = ["cdylib"]
 
 [dependencies]
-zentract-types = { path = "../zentract-types" }
+zentract-types = { path = "../zentract-types" , version = "0.1.0" }
 tract-onnx = "0.22"
