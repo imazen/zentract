@@ -46,6 +46,8 @@ Thumbs.db
 *.iml
 
 # Tooling noise
+.jj/
+.workongoing
 .superwork/
 .claude/
 copter-report/
