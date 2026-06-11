@@ -1,5 +1,9 @@
 [workspace]
 members = ["zentract-types", "zentract-abi", "zentract-api"]
+# `apidoc/` is the CI-free public-API snapshot runner: excluded so plain
+# `cargo test` and every CI job never compile its dependency tree or run
+# rustdoc. Regenerate via `just api-doc`.
+exclude = ["apidoc"]
 resolver = "3"
 
 [workspace.package]

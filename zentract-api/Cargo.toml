@@ -19,13 +19,9 @@ exclude = [
     "Cargo.toml.original.txt",
     "fuzz/",
     "docs/",
-    "tests/public_api_doc.rs",
 ]
 
 [dependencies]
 zentract-types = { path = "../zentract-types" , version = "0.1.0" }
 libloading = "0.9"
 thiserror = "2"
-
-[dev-dependencies]
-serde_json = "1.0.150"

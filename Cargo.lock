@@ -1317,7 +1317,6 @@ name = "zentract-api"
 version = "0.1.0"
 dependencies = [
  "libloading",
- "serde_json",
  "thiserror",
  "zentract-types",
 ]
