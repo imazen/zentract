@@ -1,6 +1,6 @@
 <!-- GENERATED FROM README.md by zenutils gen-readme-crates.sh — DO NOT EDIT. -->
 
-# zentract [![CI](https://img.shields.io/github/actions/workflow/status/imazen/zentract/ci.yml?style=flat-square&label=CI)](https://github.com/imazen/zentract/actions/workflows/ci.yml)
+# zentract
 
 zentract puts the [tract](https://github.com/sonos/tract) ONNX inference engine behind a C ABI in a `cdylib`, so your application loads it at runtime with `dlopen` instead of statically linking it. Your binary depends only on the small `zentract-api` host loader (`libloading` + `thiserror`); tract and its large transitive tree compile once, into the plugin, and stay out of your build.
 
