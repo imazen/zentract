@@ -5,6 +5,7 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 description = "cdylib plugin that wraps tract-onnx behind a C ABI"
+readme = "../README.crates.md"
 exclude = [
     "CLAUDE.md",
     "CONTEXT-HANDOFF.md",

@@ -1,4 +1,6 @@
-# zentract [![CI](https://img.shields.io/github/actions/workflow/status/imazen/zentract/ci.yml?style=flat-square&label=CI)](https://github.com/imazen/zentract/actions/workflows/ci.yml) [![crates.io](https://img.shields.io/crates/v/zentract-api?style=flat-square)](https://crates.io/crates/zentract-api) [![lib.rs](https://img.shields.io/crates/v/zentract-api?style=flat-square&label=lib.rs&color=blue)](https://lib.rs/crates/zentract-api) [![docs.rs](https://img.shields.io/docsrs/zentract-api?style=flat-square)](https://docs.rs/zentract-api) [![MSRV](https://img.shields.io/badge/MSRV-1.88-blue?style=flat-square)](https://doc.rust-lang.org/cargo/reference/manifest.html#the-rust-version-field) [![license](https://img.shields.io/badge/license-AGPL--3.0%20%2F%20Commercial-blue?style=flat-square)](#license)
+<!-- GENERATED FROM README.md by zenutils gen-readme-crates.sh — DO NOT EDIT. -->
+
+# zentract [![CI](https://img.shields.io/github/actions/workflow/status/imazen/zentract/ci.yml?style=flat-square&label=CI)](https://github.com/imazen/zentract/actions/workflows/ci.yml)
 
 zentract puts the [tract](https://github.com/sonos/tract) ONNX inference engine behind a C ABI in a `cdylib`, so your application loads it at runtime with `dlopen` instead of statically linking it. Your binary depends only on the small `zentract-api` host loader (`libloading` + `thiserror`); tract and its large transitive tree compile once, into the plugin, and stay out of your build.
 
