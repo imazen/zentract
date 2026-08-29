@@ -26,4 +26,4 @@ crate-type = ["cdylib"]
 
 [dependencies]
 zentract-types = { path = "../zentract-types" , version = "0.1.0" }
-tract-onnx = "0.22"
+tract-onnx = "0.22.3"

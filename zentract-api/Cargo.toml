@@ -24,5 +24,5 @@ exclude = [
 
 [dependencies]
 zentract-types = { path = "../zentract-types" , version = "0.1.0" }
-libloading = "0.9"
-thiserror = "2"
+libloading = "0.9.0"
+thiserror = "2.0.20"

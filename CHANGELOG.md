@@ -7,6 +7,19 @@ unpublished, and version in lockstep.
 
 ## [Unreleased]
 
+### Changed
+
+- `tract-onnx` 0.22 → 0.22.3, `libloading` 0.9 → 0.9.0, `thiserror` 2 → 2.0.20
+  (all previously truncated), and `zenutils-apidoc` 0.1.0 → 0.1.1 in the apidoc
+  runner. Lockfile refreshed (56 packages); no zen-family crate moved.
+- **`tract-onnx` deliberately held on the 0.22 line.** Every 0.23 release —
+  0.23.0 through the current 0.23.5 — declares `rust-version = 1.91`, while this
+  workspace declares `rust-version = "1.88"`. The `MSRV` CI job runs
+  `cargo hack check --rust-version --workspace`, which is exactly the check that
+  would fail. 0.22.3 (MSRV 1.85) is the newest release that fits, so the
+  requirement moves within its line instead. Adopting 0.23 means raising the
+  declared MSRV by three toolchain releases — an owner decision.
+
 ### zentract-api
 
 #### Added
