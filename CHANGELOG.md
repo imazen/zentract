@@ -17,6 +17,17 @@ unpublished, and version in lockstep.
 
 ### Workspace
 
+#### Fixed
+- **Pushes to `main` now cancel their superseded CI runs.** `ci.yml` keyed its
+  concurrency group on `${{ github.head_ref || github.run_id }}`.
+  `github.head_ref` is populated only for `pull_request` events, so on a push it
+  was empty and the group fell through to `github.run_id` — unique per run, so no
+  two pushes ever shared a group and `cancel-in-progress` could never fire. Every
+  push started a full matrix that ran to completion even when several commits
+  landed seconds apart. Now keyed on `${{ github.ref }}`, which is set for both
+  event types (`refs/heads/main` on push, `refs/pull/N/merge` on a PR), so PR
+  cancellation is unchanged and consecutive pushes supersede each other.
+
 #### Added
 - GitHub Actions CI: test matrix (Linux/macOS/Windows on x86-64, plus Linux and
   macOS on ARM64), clippy, rustfmt, and MSRV (1.88) checks (d11d230, 6de10f8).
