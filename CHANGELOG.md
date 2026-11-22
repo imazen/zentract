@@ -50,6 +50,7 @@ unpublished, and version in lockstep.
   stays out of published tarballs (4d2fc65, 3ebb5af).
 
 #### Changed
+- CI test matrix: drop `macos-26-intel`, keeping `macos-latest` (ARM64).
 - Public-API snapshot runner migrated to the CI-free zenutils-apidoc 0.1.0
   package (556d029).
 - Dependencies refreshed (b1d6e11, fc1d8e0, efa45ab, 634b326).
