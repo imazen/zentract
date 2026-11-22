@@ -9,6 +9,7 @@ unpublished, and version in lockstep.
 
 ### Changed
 
+- Bump `thiserror` in `zentract-api` from `2.0.20` to `2.0.21` and refresh `Cargo.lock`.
 - `tract-onnx` 0.22 → 0.22.3, `libloading` 0.9 → 0.9.0, `thiserror` 2 → 2.0.20
   (all previously truncated), and `zenutils-apidoc` 0.1.0 → 0.1.1 in the apidoc
   runner. Lockfile refreshed (56 packages); no zen-family crate moved.
